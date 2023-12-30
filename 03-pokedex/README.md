@@ -32,7 +32,47 @@
 $ yarn install
 ```
 
+## Docker build & run
+
+1. Build:
+```bash
+$ docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+2. Run:
+```bash
+$ docker-compose -f docker-compose.prod.yaml --env-file .env.prod up
+```
+
+By default docker-compose uses the .env file, so if you have the .env file and configure it with your production environment variables, it would be enough
+```bash
+$ docker-compose -f docker-compose.prod.yaml up --build
+```
+
+## Environment Setup
+
+1. Clone the .env.template file:
+```bash
+# production mode
+$ cp .env.template .env
+```
+
+2. Fill in the .env file:
+
+Open the .env file in your text editor.
+Replace the placeholder values with your actual credentials and settings.
+Be careful not to commit this file to version control, as it contains sensitive information.
+
+
+## Running DB
+
+```bash
+# production mode
+$ docker compose up -d
+```
+
 ## Running the app
+
 
 ```bash
 # development
@@ -43,13 +83,6 @@ $ yarn run start:dev
 
 # production mode
 $ yarn run start:prod
-```
-
-## Running DB
-
-```bash
-# production mode
-$ docker compose up -d
 ```
 
 ## Test
